@@ -4,9 +4,8 @@ param (
     [string]$OutPath
 )
 
-$SuffixList = @(".mp4", ".mkv", ".avi", ".AVI", ".bik", ".wmv", ".flv")
-# $SuffixList = @(".flv")
-$OutSuffix = ".mp4"
+$SuffixList = @(".ico", ".bmp")
+$OutSuffix = ".png"
 
 $SourceFiles = Get-ChildItem $InPath
 
@@ -18,6 +17,6 @@ foreach ($SourceFile in $SourceFiles) {
     Write-Output $SourceFile
     $OutFilePath = $OutPath + $SourceFile.Name.Replace($InPutSuffix, $OutSuffix)
     Write-Output $OutFilePath
-    ffmpeg -hide_banner -i $SourceFile -c:v libx264 -crf 18 -preset:v medium -profile:v high -c:a aac  $OutFilePath
+    ffmpeg -hide_banner -i $SourceFile $OutFilePath
   }
 }
