@@ -1,23 +1,23 @@
 # ./compress_cpu_high.ps1 ./inputs/ ./outputs/
 param (
-    [string]$InPath,
-    [string]$OutPath
+    [string]$InPath = "./in/",
+    [string]$OutPath = "./out/"
 )
 
+Write-Output "Input Path: $InPath"
+Write-Output "Output Path: $OutPath"
+
 $SuffixList = @(".mp4", ".mkv", ".avi", ".AVI", ".bik", ".wmv", ".flv")
-# $SuffixList = @(".flv")
 $OutSuffix = ".mp4"
 
 $SourceFiles = Get-ChildItem $InPath
 
 foreach ($SourceFile in $SourceFiles) {
-  $InPutSuffix = $SourceFile.Name.Split(".")[-1]
-  $InPutSuffix = "." + $InPutSuffix
+  $InPutSuffix = "." + $SourceFile.Name.Split(".")[-1]
   if ($SuffixList.Contains($InPutSuffix)){
-    Write-Output "Now Processing:"
-    Write-Output $SourceFile
+    Write-Output "Now Processing: $SourceFile"
     $OutFilePath = $OutPath + $SourceFile.Name.Replace($InPutSuffix, $OutSuffix)
-    Write-Output $OutFilePath
+    Write-Output "Output As: $OutFilePath"
     ffmpeg -hide_banner -i $SourceFile -c:v libx264 -crf 18 -preset:v medium -profile:v high -c:a aac  $OutFilePath
   }
 }
