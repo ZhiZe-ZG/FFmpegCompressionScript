@@ -14,7 +14,7 @@ ForEach-Object{
     Set-Location -Path $repoPath
     $nowPath = Get-Location
     Write-Output "Now update $nowPath"
-    git remote update
+    git fetch --all
     Set-Location -Path $workPath # return $workPath
 }
 
