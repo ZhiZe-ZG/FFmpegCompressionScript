@@ -1,11 +1,21 @@
 # Update all mirror git repositories in the specified directory
 param (
-    [string]$WorkPath
+    [string]$workPath
 )
 
-Get-ChildItem -Path $WorkPath --Directory -Filter ".git" | ForEach-Object {
-    $repoPath = $_.DirectoryName
-    Write-Host "Updating repository at $repoPath"
+$currentLocation = Get-Location
+
+Set-Location $workPath
+
+Get-ChildItem -Path $workPath -Directory | # Get all sub-directories
+Where-Object {$_.Name -Match "\.git$"} | # End with ".git" 
+ForEach-Object{
+    $repoPath = $_.FullName
     Set-Location -Path $repoPath
+    $nowPath = Get-Location
+    Write-Output "Now update $nowPath"
     git remote update
+    Set-Location -Path $workPath # return $workPath
 }
+
+Set-Location -Path $currentLocation # return start location
