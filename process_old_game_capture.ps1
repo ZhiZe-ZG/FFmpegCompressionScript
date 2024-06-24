@@ -23,7 +23,7 @@ else {
 }
 
 # get source file paths
-if (Test-Folder $InPath) {
+if (Test-Path $InPath) {
   $SourceFiles = Get-ChildItem $InPath
 }
 else{
@@ -45,10 +45,10 @@ foreach ($SourceFile in $SourceFiles) {
     $OutFilePath = $OutPath + $SourceFile.Name.Replace($InPutSuffix, $OutSuffix)
     Write-Output $OutFilePath
     if ($DeviceName -eq "CPU"){
-      ffmpeg -hide_banner -i $SourceFile -c:v libx264 -crf 23 -preset:v medium -profile:v high -c:a aac  $OutFilePath
+      ffmpeg -hide_banner -i $SourceFile -c:v libx264 -crf 20 -preset:v medium -profile:v high -c:a aac  $OutFilePath
     }
     elseif ($DeviceName -eq "GPU_NVIDIA") {
-      ffmpeg -hide_banner -i $SourceFile -c:v h264_nvenc -gpu $GPUNumber -cq 28 -multipass 2 -preset:v p7 -profile:v 2 -c:a aac  $OutFilePath
+      ffmpeg -hide_banner -i $SourceFile -c:v h264_nvenc -gpu $GPUNumber -cq 20 -multipass 2 -preset:v p7 -profile:v 2 -c:a aac  $OutFilePath
     }
   }
 }
