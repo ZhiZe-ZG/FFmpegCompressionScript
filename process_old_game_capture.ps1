@@ -1,7 +1,7 @@
 # ./process_old_game_capture.ps1 ./inputs/ ./outputs/
 param (
-  [string]$InPath="./inputs/",
-  [string]$OutPath="./outputs/",
+  [string]$InPath="./in/",
+  [string]$OutPath="./out/",
   [string]$DeviceName = "CPU"
 )
 
