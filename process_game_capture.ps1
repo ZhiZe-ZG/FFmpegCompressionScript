@@ -22,8 +22,8 @@ elseif ($DeviceName -eq "GPU_NVIDIA") {
   Write-Output "Warning!!! The compression quality of GPU is generally worse than that of CPU!"
   Write-Output "It give a larger file size with the same compression quality!"
   Write-Output "Sometimes it may even be larger than the original file!"
-  Write-Output "This taske not use GPU yet!"
-  # exit
+  Write-Output "This task not use GPU yet!"
+  exit
   # $Device = "h264_nvenc"
 }
 else {
