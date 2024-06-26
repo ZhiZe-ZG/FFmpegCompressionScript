@@ -1,4 +1,5 @@
-# ./compress_cpu_high.ps1 ./inputs/ ./outputs/
+# This script is used to process the videos made by me and will be posted.
+# ./process_post_video.ps1 ./inputs/ ./outputs/
 param (
     [string]$InPath = "./in/",
     [string]$OutPath = "./out/"
