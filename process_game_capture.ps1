@@ -54,11 +54,12 @@ foreach ($SourceFile in $SourceFiles) {
     $OutFilePath = $OutPath + $SourceFile.Name.Replace($InPutSuffix, $OutSuffix)
     Write-Output $OutFilePath
     if ($DeviceName -eq "CPU"){
-      ffmpeg -hide_banner -i $SourceFile -c:v libx264 -crf 18 -preset:v veryslow -profile:v high -c:a aac  $OutFilePath
+      # The -map 0 select all tracks
+      ffmpeg -hide_banner -i $SourceFile -map 0 -c:v libx264 -crf 18 -preset:v veryslow -profile:v high -c:a aac  $OutFilePath
     }
     elseif ($DeviceName -eq "GPU_NVIDIA") {
       # not fully tested yet
-      ffmpeg -hide_banner -i $SourceFile -c:v h264_nvenc -gpu $GPUNumber -cq 18 -multipass 2 -preset:v slow -profile:v high -c:a aac  $OutFilePath
+      ffmpeg -hide_banner -i $SourceFile -map 0 -c:v h264_nvenc -gpu $GPUNumber -cq 18 -multipass 2 -preset:v slow -profile:v high -c:a aac  $OutFilePath
     }
   }
 }
