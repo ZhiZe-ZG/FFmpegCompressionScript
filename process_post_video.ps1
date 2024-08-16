@@ -1,5 +1,6 @@
 # This script is used to process the videos made by me and will be posted.
 # ./process_post_video.ps1 ./inputs/ ./outputs/
+# Cautions!!! This can not handle multiple audio tracks.
 param (
     [string]$InPath = "./in/",
     [string]$OutPath = "./out/"
