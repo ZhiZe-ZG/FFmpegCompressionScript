@@ -11,7 +11,7 @@ param (
 $GPUNumber = 0 # usually just one GPU and the index number is 0
 
 # constant variables
-$SuffixList = @(".mp4", ".mkv")
+$SuffixList = @(".mp4", ".mkv", ".avi")
 $OutSuffix = ".mp4"
 
 # check device
