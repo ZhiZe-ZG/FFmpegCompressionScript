@@ -34,7 +34,7 @@ def main [
       print $"Now Processing: ($source_file.name)"
       print $"Output As: ($output_path)"
 
-      ffmpeg -hide_banner -y -threads 0 -i $input_path -map "0:v?" -map "0:a?" -c:v libaom-av1 -crf 30 -cpu-used 4 -c:a libopus -movflags "+faststart" $output_path
+      ffmpeg -hide_banner -y -threads 0 -i $input_path -map "0:v?" -map "0:a?" -c:v libaom-av1 -crf 30 -cpu-used 8 -c:a libopus -movflags "+faststart" $output_path
     }
   }
 }
