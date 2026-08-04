@@ -21,3 +21,5 @@ Some PowerShell scripts about compression with FFmpeg.
  also use jpeg image file format. consider AVIF.
 
  find a subtitle format.
+ 
+ max cpu-used is 8 and crf is 30. minus when the quality is un acceptable. cpu-used first (which control file size), crf second (which control file size).  When enlarge file size, reset the cpu-used to 8.
