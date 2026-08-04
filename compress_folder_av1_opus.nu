@@ -7,12 +7,12 @@ def main [
   let suffix_list = [
     ".mp4"
     ".mkv"
-    ".avi"
-    ".wmv"
-    ".flv"
-    ".mov"
-    ".m4v"
-    ".webm"
+    # ".avi"
+    # ".wmv"
+    # ".flv"
+    # ".mov"
+    # ".m4v"
+    # ".webm"
   ]
 
   mkdir $out_path
